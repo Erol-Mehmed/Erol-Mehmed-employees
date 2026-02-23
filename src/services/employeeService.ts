@@ -1,0 +1,1 @@
+export async function parseCsv(file: File)
