@@ -6,7 +6,7 @@ A React.js app that finds pairs of employees who worked together on common proje
 - Upload CSV with columns: EmpID, ProjectID, DateFrom, DateTo
 - Supports multiple date formats (YYYY-MM-DD, DD/MM/YYYY, DD.MM.YYYY, March 1, 2020)
 - Treats NULL as today for ongoing projects
-- Shows Employee ID #1, Employee ID #2, Project ID, and Days Worked
+- Shows Employee ID #1, Employee ID #2, Project ID, and Days worked
 
 ## Usage
 1. Clone the repo: `git clone https://github.com/Erol-Mehmed/Erol-Mehmed-employees.git`
