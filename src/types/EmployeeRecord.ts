@@ -1,6 +1,6 @@
 export interface EmployeeRecord {
-  EmpID: string;
-  ProjectID: string;
+  EmpID: number;
+  ProjectID: number;
   DateFrom: Date;
   DateTo: Date;
 }
