@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 import './App.scss'
-import EmployeeGrid from "./components/EmployeeGrid.tsx";
+import EmployeeGrid from "./components/EmployeeGrid/EmployeeGrid.tsx";
 import {calculateOverlaps, parseCsv} from "./services/employeeService.ts";
 import type {EmployeeOverlap} from "./types/EmployeeOverlap.ts";
 
 function App() {
-  const [csvFile, setCsvFile] = useState<File | null>(null);
   const [data, setData] = useState<EmployeeOverlap[]>([]);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,12 +13,8 @@ function App() {
 
     if (!file) return;
 
-    setCsvFile(file);
-
     const records = await parseCsv(file);
     const overlaps = calculateOverlaps(records);
-
-    console.log('test>>> ', overlaps);
 
     setData(overlaps);
   };
@@ -31,10 +26,7 @@ function App() {
       </header>
 
       <main className="app-content">
-        <div className="add-file-container">
-          <input type="file" accept=".csv" onChange={handleFileUpload} />
-          {csvFile && <p>Selected file: {csvFile.name}</p>}
-        </div>
+        <input type="file" accept=".csv" className="file-input" onChange={handleFileUpload} />
 
         <EmployeeGrid data={data}/>
       </main>

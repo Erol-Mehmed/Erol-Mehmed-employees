@@ -1,0 +1,46 @@
+.employee-grid-container {
+  margin-top: 120px;
+
+  .employee-table-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+
+    .employee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+
+      thead {
+        background-color: seagreen;
+        color: white;
+
+        th {
+          padding: 0.75rem 1rem;
+          border-bottom: 2px solid #555;
+          text-align: left;
+        }
+      }
+
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+
+          &:hover {
+            background-color: #e0e0ff;
+          }
+        }
+
+        td {
+          padding: 0.5rem 1rem;
+          border-bottom: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}

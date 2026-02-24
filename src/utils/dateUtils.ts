@@ -3,7 +3,38 @@ export function parseDate(dateStr: string): Date {
     return new Date(); // treat NULL as today
   }
 
-  return new Date(dateStr);
+  const str = dateStr.trim();
+
+  // Try ISO / standard parse first
+  const iso = Date.parse(str);
+  if (!isNaN(iso)) return new Date(iso);
+
+  // Try DD/MM/YYYY or D/M/YYYY
+  const dmMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (dmMatch) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, day, month, year] = dmMatch;
+    return new Date(Number(year), Number(month) - 1, Number(day));
+  }
+
+  // Try DD.MM.YYYY or D.M.YYYY
+  const dotMatch = str.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+  if (dotMatch) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, day, month, year] = dotMatch;
+    return new Date(Number(year), Number(month) - 1, Number(day));
+  }
+
+  // Try Month D, YYYY (text month)
+  const textMonthMatch = str.match(/^([a-zA-Z]+) (\d{1,2}), (\d{4})$/);
+  if (textMonthMatch) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, monthName, day, year] = textMonthMatch;
+    const monthIndex = new Date(`${monthName} 1, 2000`).getMonth(); // convert text to month index
+    return new Date(Number(year), monthIndex, Number(day));
+  }
+
+  throw new Error(`Unrecognized date format: "${dateStr}"`);
 }
 
 export function calculateOverlapDays(
