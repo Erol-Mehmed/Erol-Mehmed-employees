@@ -12,7 +12,7 @@ A React.js app that finds pairs of employees who worked together on common proje
 1. Clone the repo: `git clone https://github.com/Erol-Mehmed/Erol-Mehmed-employees.git`
 2. Install dependencies: `npm install`
 3. Run: `npm start`
-4. Open шhttp://localhost:5173/](http://localhost:5173/) and upload a CSV
+4. Open [http://localhost:5173/](http://localhost:5173/) and upload a CSV
 
 ## Author
 Erol Mehmed
