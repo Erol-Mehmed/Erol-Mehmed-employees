@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import './App.css'
+import './App.scss'
 import EmployeeGrid from "./components/EmployeeGrid.tsx";
 
 function App() {
@@ -16,13 +16,17 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Employee overlaps</h1>
+      <header className="app-header">
+        <h1>Employee overlaps</h1>
+      </header>
 
-      <input type="file" accept=".csv" onChange={handleFileUpload} />
+      <main className="app-content">
+        <input type="file" accept=".csv" onChange={handleFileUpload} />
 
-      {csvFile && <p>Selected file: {csvFile.name}</p>}
+        {csvFile && <p>Selected file: {csvFile.name}</p>}
 
-      {/*<EmployeeGrid data={}/>*/}
+        {/*<EmployeeGrid data={}/>*/}
+      </main>
     </div>
   )
 }
